@@ -6,12 +6,12 @@ using System;
 
 namespace Module_2
 {
-    class Customer
+    class CustomerService
     {
         private readonly CrmServiceClient svc;
         private readonly Entity entity;
 
-        public Customer(CrmServiceClient svc, Entity entity)
+        public CustomerService(CrmServiceClient svc, Entity entity)
         {
             this.svc = svc;
             this.entity = entity;
@@ -26,7 +26,7 @@ namespace Module_2
                             ).ToArray();
 
                 EntityReference customerRef = new EntityReference("account", accounts.ElementAt(new Random().Next(0, accounts.Length)).Id);
-                entity["new_customer"] = customerRef;
+                entity["drn_customer"] = customerRef;
             }
         }
     }

@@ -4,18 +4,20 @@ using Microsoft.Xrm.Tooling.Connector;
 namespace Module_2
 {
 
-    class Status
+    class StatusService
     {
 
         public enum Statuses { Created, Confirmed, Renting, Returned, Canceled };
         public Statuses status;
         private readonly CrmServiceClient svc;
         private readonly Entity entity;
-        public Status(CrmServiceClient svc, Entity entity)
+
+        public StatusService(CrmServiceClient svc, Entity entity)
         {
             this.svc = svc;
             this.entity = entity;
         }
+
         public void StatusAssign(Statuses s)
         {
             switch (s)
@@ -25,11 +27,11 @@ namespace Module_2
                     entity["statecode"] = new OptionSetValue(0);
                     break;
                 case Statuses.Confirmed:
-                    entity["statuscode"] = new OptionSetValue(100000000);
+                    entity["statuscode"] = new OptionSetValue(172620000);
                     entity["statecode"] = new OptionSetValue(0);
                     break;
                 case Statuses.Renting:
-                    entity["statuscode"] = new OptionSetValue(100000001);
+                    entity["statuscode"] = new OptionSetValue(172620001);
                     entity["statecode"] = new OptionSetValue(0);
                     break;
                 case Statuses.Returned:
@@ -37,7 +39,7 @@ namespace Module_2
                     entity["statecode"] = new OptionSetValue(1);
                     break;
                 case Statuses.Canceled:
-                    entity["statuscode"] = new OptionSetValue(100000002);
+                    entity["statuscode"] = new OptionSetValue(172620002);
                     entity["statecode"] = new OptionSetValue(1);
                     break;
             }
